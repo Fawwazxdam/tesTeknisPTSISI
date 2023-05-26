@@ -18,6 +18,7 @@ class GajiController extends Controller
     {
         $data = User::findorFail($id);
         $user_id = $data['id'];
+        $nama = $data['name'];
         $role = $data['role'];
         $data2 = Absen::all()->where('user_id', '=', $user_id)
         ->where('status','=','masuk');
@@ -35,5 +36,7 @@ class GajiController extends Controller
                 return $hari * 50000;
             }
         }
+        $gaji = gaji($hari, $role);
+        return view('detailgaji',compact('gaji','nama'));
     }
 }
