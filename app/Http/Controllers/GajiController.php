@@ -16,12 +16,24 @@ class GajiController extends Controller
     
     public function show(string $id)
     {
-        $data = User::all();
-        foreach ($data as $user) {
-            $user_id = $user->id;
-            $status = $user->status;
+        $data = User::findorFail($id);
+        $user_id = $data['id'];
+        $role = $data['role'];
+        $data2 = Absen::all()->where('user_id', '=', $user_id)
+        ->where('status','=','masuk');
+        // dd($data2);
+        $hari = count($data2);
+
+        function gaji($hari,$role)
+        {
+
+            if ($role == "0") {
+                return $hari * 100000;
+            } else if ($role == "1") {
+                return $hari * 75000;
+            } else {
+                return $hari * 50000;
+            }
         }
-        dd($user_id);
-        $data2 = Absen::all()->where('user',$user_id);
     }
 }
