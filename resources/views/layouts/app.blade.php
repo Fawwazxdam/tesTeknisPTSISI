@@ -31,7 +31,27 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        @if(!Auth::User())
+                        <li class="nav-item">
+                            <a href="/segitiga" class="nav-link">segitiga</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/angka" class="nav-link">angka</a>
+                        </li>
+                        @elseif(Auth::user()->role == '0')
+                        <li class="nav-item">
+                            <a href="/dashboard" class="nav-link">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/user" class="nav-link">User</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/absen" class="nav-link">Absen</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/gaji" class="nav-link">Gaji</a>
+                        </li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
