@@ -1,0 +1,9 @@
+akun:
+email : admin@g.c
+pass : admin123
+
+email : user1@g.c
+pass : user1123
+
+email : user2@g.c
+pass : user2123
